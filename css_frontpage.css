@@ -18,9 +18,43 @@ h2 {
 html{
     background-color:#969f7b ;
 }
+button{
+    background-color:#969f7b ;
+}
 img{
     display: block;
     margin: 0 auto;
     max-width: 100%;
     height: auto;;
+}
+
+#defMeasure{
+    background-color:#f74141 ;
+}
+
+#hiddenMsgLeft{
+    height:bottom;
+    text-align:left;
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+}
+
+#hiddenMsgRight{
+    height:bottom;
+    text-align:right;
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+}
+input[type=text], input[type=password] {
+    border-style:solid;
+    outline-style: solid;
+    outline-width:5px;
+    outline-color:#3e4231;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;    
+    background: #969f7b;
 }
