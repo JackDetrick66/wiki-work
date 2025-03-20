@@ -47,8 +47,8 @@ img{
     right: 2%;
     bottom: 2%;
 }
-input[type=text], input[type=password] {
-    border-style:solid;
+input[type=text], input[type=password]{
+    border-style:none;
     outline-style: solid;
     outline-width:5px;
     outline-color:#3e4231;
@@ -57,4 +57,15 @@ input[type=text], input[type=password] {
     margin: 5px 0 22px 0;
     display: inline-block;    
     background: #969f7b;
+}
+input[type=submit] {
+    background: #969f7b;
+    border-style:none;
+    outline-style:solid;
+    outline-width:5px;
+    outline-color:#3e4231;
+    width: 15%;
+    padding: 0.5%;
+    margin: 5px 0 10px 0;
+    display: inline-block;  
 }
