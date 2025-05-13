@@ -1,0 +1,34 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_frontpage.css') }}">
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Chronicle Front Page</title>
+    <script src="{{ url_for('static', filename='js_front.js') }}"></script>
+  </head>
+  <h1>
+  <!-- <img src="325146.jpg" alt="And herein lies an image you should be seeing. If not, something is wrong" /> -->
+    <p>What is the worth of a man?</p>
+    <p>The weight of the sins upon his back.</p>
+    <p>-Uriel, First Speaker of the Ordained</p>
+
+  </h1>
+  <body>
+    <a href="{{ url_for('signup') }}">
+      <button>Login/Signup</button>
+      </a>
+
+    
+    <a id="enteringArchiv" href="{{ url_for('contentListing') }}">
+      <button>Walk the Archives</button>
+    </a>
+
+
+    <p><input id="defMeasure" type="button" value="Engage Defensive Measures"></p>
+  </body>
+  
+  
+</html>
