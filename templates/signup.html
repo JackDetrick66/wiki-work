@@ -12,13 +12,15 @@
   <body>
     <p> New to the Archives? Signup here!</p>
     <p> A returning member? Please Log your entrance.</p>
-    <form action="/NameOfPageForLogin/" method="post">
+    <form action="{{ url_for('auth.login') }}" method="post">
       <label for="handle_name">Archivist Handle: </label>
       <input id="handle_name" type="text" name="handle_name" value="Handle"><br><br>
-      <label for ="pass"> Passcode: </label>
+    
+      <label for="handle_pass">Passcode: </label>
       <input id="handle_pass" type="text" name="pass" value="Code"><br><br>
-      <input type="submit" value="Submit">
-  </form>
+    
+      <input type="submit" value="Submit" class="button-link">
+    </form>
 
 
   </body>

@@ -27,7 +27,8 @@ h2 {
 html{
     background-color:#969f7b ;
 }
-button{
+.button-link, button{
+    padding: 0.5rem 1rem;
     border-style:none;
     outline-style: solid;
     outline-width:5px;
@@ -37,7 +38,11 @@ button{
     margin: 5px 0 22px 0;
     display: inline-block;    
     background: #969f7b;
-    cursor: url("/static/darker.cur"), auto;;
+
+}
+
+.button-link:hover, button:hover, submit:hover{
+    background-color: #656b50;
 }
 
 
