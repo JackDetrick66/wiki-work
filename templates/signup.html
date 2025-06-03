@@ -1,30 +1,34 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css_frontpage.css') }}">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Login_signup_page</title>
+    <title>signup_page</title>
   </head>
-  <h1>
-    WELCOME TO THE ARCHIVES, PLEASE REGISTER OR LOG YOUR ENTRY
-  </h1>
   <body>
-    <p> New to the Archives? Signup here!</p>
-    <p> A returning member? Please Log your entrance.</p>
-    <form action="{{ url_for('auth.login') }}" method="post">
-      <label for="handle_name">Archivist Handle: </label>
-      <input id="handle_name" type="text" name="handle_name" value="Handle"><br><br>
-    
-      <label for="handle_pass">Passcode: </label>
-      <input id="handle_pass" type="text" name="pass" value="Code"><br><br>
-    
-      <input type="submit" value="Submit" class="button-link">
-    </form>
+<br><br>
+<form method="POST" action="{{ url_for('auth.signup') }}">
+  <label for="username">Username:</label>
+  <input type="text" name="username" id="username" required>
 
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password" required>
 
-  </body>
+  <input type="submit" value="Sign Up">
+</form>
 
-  
-  
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="container mt-3">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+</body>
 </html>

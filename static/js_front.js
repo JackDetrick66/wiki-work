@@ -18,3 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("defMeasure").addEventListener("click", defMeasureFunc);
 });
+
+function flashed(message){
+    window.alert(message);
+}

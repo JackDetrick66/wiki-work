@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_frontpage.css') }}">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Login_signup_page</title>
+  </head>
+  <h1>
+    WELCOME TO THE ARCHIVES, PLEASE REGISTER OR LOG YOUR ENTRY
+  </h1>
+  <body>
+    <p> New to the Archives? </p>
+      <a href="{{ url_for('auth.signup') }}" class="button-link-inline">
+      Signup Here
+    </a>
+    <p> A returning member? Please Log your entrance.</p>
+    <form action="{{ url_for('auth.login') }}" method="post">
+      <label for="handle_name">Archivist Handle: </label>
+      <input id="handle_name" type="text" name="handle_name" value=""><br><br>
+    
+      <label for="handle_pass">Passcode: </label>
+      <input id="handle_pass" type="text" name="pass" value=""><br><br>
+    
+      <input type="submit" value="Submit" class="button-link">
+    </form>
+
+
+  </body>
+
+  
+  
+</html>
