@@ -16,16 +16,26 @@
     </a>
     <p> A returning member? Please Log your entrance.</p>
     <form action="{{ url_for('auth.login') }}" method="post">
-      <label for="handle_name">Archivist Handle: </label>
-      <input id="handle_name" type="text" name="handle_name" value=""><br><br>
+      <label for="username">Archivist Handle:</label>
+      <input type="text" name="username" id="username" required><br><br>
     
-      <label for="handle_pass">Passcode: </label>
-      <input id="handle_pass" type="text" name="pass" value=""><br><br>
+      <label for="password">Passcode:</label>
+      <input type="password" name="password" id="password" required><br><br>
     
       <input type="submit" value="Submit" class="button-link">
     </form>
 
-
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container mt-3">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
   </body>
 
   

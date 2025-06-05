@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_login import LoginManager
-from db_models import db, load_user, user
+from db_models import db, load_user, User
 from main import main_bp
 from auth import auth_bp
 
