@@ -1,3 +1,4 @@
+//should set the venv as the environment every time
 {
     "python.terminal.activateEnvironment": true,
     "python.defaultInterpreterPath": "./venv/Scripts/python.exe"

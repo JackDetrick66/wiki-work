@@ -6,8 +6,7 @@ from auth import auth_bp
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'some-secure-secret-key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+app.config.from_object('config.Config')
 
 # Register Blueprints
 app.register_blueprint(main_bp)
@@ -27,14 +26,11 @@ login_manager.user_loader(load_user)  # use imported load_user
 def home():
     return render_template('index.html')
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
 @app.route('/contentListing')
 def contentListing():
     return render_template('contentListing.html')
-
+# will cause the app to run when its being run directly, as opposed to being imported
+# debug = True should be set to false for production
 if __name__ == '__main__': 
     app.run(debug=True)
 

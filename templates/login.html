@@ -11,10 +11,12 @@
   </h1>
   <body>
     <p> New to the Archives? </p>
+    // redirect to signup page
       <a href="{{ url_for('auth.signup') }}" class="button-link-inline">
       Signup Here
     </a>
     <p> A returning member? Please Log your entrance.</p>
+    // formats how the user inputs the info that the site will use for login
     <form action="{{ url_for('auth.login') }}" method="post">
       <label for="username">Archivist Handle:</label>
       <input type="text" name="username" id="username" required><br><br>
@@ -24,7 +26,8 @@
     
       <input type="submit" value="Submit" class="button-link">
     </form>
-
+// this handles the flashed messages by adding them to the page,
+// think about making this as a popup instead
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       <div class="container mt-3">
