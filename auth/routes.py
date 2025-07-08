@@ -30,11 +30,12 @@ def signup():
             db.session.commit()
         except Exception as e:
             db.session.rollback()
+            flash("An error occurred. Please try again.", "danger")
             print("Error with commit to database:", e)
         
 
         flash('Signup successful!')
-        return redirect(url_for('/'))
+        return redirect(url_for('main.index'))
     # If GET, just send the html for signup
     return render_template('signup.html')
 

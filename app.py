@@ -15,11 +15,17 @@ app.register_blueprint(auth_bp)
 # Initialize DB
 db.init_app(app)
 
+# define when i want to load a users info
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 # Set up LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
 login_manager.user_loader(load_user)  # use imported load_user
+
+
 
 # Routes
 @app.route('/')
