@@ -60,7 +60,8 @@ def login():
         
     return render_template('login.html')
 @auth_bp.route('/logout')
-@login_required
+
+@login_required # need to be logged in to access this route
 def logout():
     logout_user()
     flash("You have successfully logged out.", "info")

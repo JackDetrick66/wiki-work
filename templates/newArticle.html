@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Article</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_frontpage.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+  </head>
+
+  <body>
+    <form action ="{{ url_for('new_article') }}" method="post">
+    <div id="editorTitle">
+        <h2>Record Name (include date as well)</h2>
+    </div>
+
+    <div id="editor">
+        <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+    </div>
+
+        <input type="hidden" name="title" id="quillTitle">
+        <input type="hidden" name="body" id="quillBody">
+        <button type="submit" class="button-link">Submit Article</button>
+    </form>
+    <script>
+        const quillTitle = new Quill('#editorTitle',{theme: 'snow'});
+        const quillBody = new Quill('#editor',{theme: 'bubble'});
+
+        document.querySelector('form').onsubmit = function() {
+            document.querySelector('#quillTitle').value = quillTitle.root.innerHTML;
+            // Get the content of the Quill editor and set it to the hidden input 
+            document.querySelector('#quillBody').value = quillBody.root.innerHTML;
+        };
+    </script>
+  </body>
+</html>
+

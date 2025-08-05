@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_login import LoginManager
-from db_models import db, load_user, User
+from db_models import db, User
 from main import main_bp
 from auth import auth_bp
 
@@ -15,17 +15,17 @@ app.register_blueprint(auth_bp)
 # Initialize DB
 db.init_app(app)
 
-# define when i want to load a users info
-def load_user(user_id):
-    return User.query.get(int(user_id))
+
 
 # Set up LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
-login_manager.user_loader(load_user)  # use imported load_user
 
-
+# define when i want to load a users info
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 # Routes
 @app.route('/')
