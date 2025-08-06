@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css_frontpage.css') }}">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{{ article.title }}</title>
+  </head>
+<body>
+    <h2 style = "text-align: center;">{{ article.title|safe }}</h2>
+    <p>{{ article.body|safe }}</p>
+    <p>Published on: {{ article.date_created.strftime('%Y-%m-%d') }}</p>
+    <p>Last updated: {{ article.last_modified.strftime('%Y-%m-%d') }}</p>
+  </body>
+  
+  
+</html>

@@ -3,6 +3,7 @@ from flask_login import LoginManager
 from db_models import db, User
 from main import main_bp
 from auth import auth_bp
+from admin import admin_bp
 
 app = Flask(__name__)
 
@@ -10,7 +11,8 @@ app.config.from_object('config.Config')
 
 # Register Blueprints
 app.register_blueprint(main_bp)
-app.register_blueprint(auth_bp)
+app.register_blueprint(auth_bp, url_prefix='/auth')
+app.register_blueprint(admin_bp, url_prefix='/admin')
 
 # Initialize DB
 db.init_app(app)

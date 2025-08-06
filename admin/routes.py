@@ -5,9 +5,10 @@ from db_models import Article, db
 from . import admin_bp
 from slugify import slugify
 
-@admin_required
+
 # this is to create a new article, only useable by admin roles
-@admin_bp.route('/new-article', methods=['GET', 'POST'])
+@admin_required 
+@admin_bp.route('/new_article', methods=['GET', 'POST'])
 def new_article():
     if request.method == 'POST':
         # Handle form submission for creating a new article
@@ -30,5 +31,3 @@ def new_article():
         return redirect(url_for('main.contentListing'))
     if request.method == 'GET':
         return render_template('newArticle.html')  
-
-

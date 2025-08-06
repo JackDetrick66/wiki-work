@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <form action ="{{ url_for('new_article') }}" method="post">
+    <form action ="{{ url_for('admin.new_article') }}" method="post">
     <div id="editorTitle">
         <h2>Record Name (include date as well)</h2>
     </div>
@@ -25,7 +25,7 @@
     </form>
     <script>
         const quillTitle = new Quill('#editorTitle',{theme: 'snow'});
-        const quillBody = new Quill('#editor',{theme: 'bubble'});
+        const quillBody = new Quill('#editor',{theme: 'snow'});
 
         document.querySelector('form').onsubmit = function() {
             document.querySelector('#quillTitle').value = quillTitle.root.innerHTML;

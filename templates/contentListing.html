@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width" />
     <title>Archives List</title>
   </head>
+<body>
   <h1>
     <p>Welcome to the Archives</p>
     <p>What records would you like to view?</p>
   </h1>
-  <body>
-    <a href = "{{ url_for('new-article') }}" class = button-link>
+
+    <a href = "{{ url_for('admin.new_article') }}" class = "button-link">
       Create New Record
     </a>
+    {% for article in articles %}
     
+        <a href = "{{ url_for('main.viewArticle', slug=article.slug) }}" class = "row-button-link">
+          {{ article.title|safe}}
+          </a>
+      {% endfor %}
+
     <p id="hiddenMsgLeft">How do you know they aren't compromised?</p>
   </body>
   
