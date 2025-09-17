@@ -11,10 +11,13 @@
     <p>Welcome to the Archives</p>
     <p>What records would you like to view?</p>
   </h1>
-
+    
+    <p>Only admins can create new records.</p>
+    {% if current_user.is_authenticated and current_user.is_admin %}
     <a href = "{{ url_for('admin.new_article') }}" class = "button-link">
       Create New Record
     </a>
+    {% endif %}
     {% for article in articles %}
     
         <a href = "{{ url_for('main.viewArticle', slug=article.slug) }}" class = "row-button-link">

@@ -11,10 +11,10 @@ app.config.from_object('config.Config')
 
 # Register Blueprints
 app.register_blueprint(main_bp)
-app.register_blueprint(auth_bp, url_prefix='/auth')
-app.register_blueprint(admin_bp, url_prefix='/admin')
+app.register_blueprint(auth_bp)
+app.register_blueprint(admin_bp)
 
-# Initialize DB
+# Initialize the database and bind it to the app
 db.init_app(app)
 
 
@@ -34,9 +34,6 @@ def load_user(user_id):
 def home():
     return render_template('index.html')
 
-@app.route('/contentListing')
-def contentListing():
-    return render_template('contentListing.html')
 # will cause the app to run when its being run directly, as opposed to being imported
 # debug = True should be set to false for production
 if __name__ == '__main__': 
