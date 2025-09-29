@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 create_db.py
 .env
+wiki-work.zip
