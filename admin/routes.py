@@ -7,8 +7,9 @@ from slugify import slugify
 
 
 # this is to create a new article, only useable by admin roles
-@admin_required 
+
 @admin_bp.route('/new-article', methods=['GET', 'POST'])
+@admin_required 
 def new_article():
     if request.method == 'POST':
         # Handle form submission for creating a new article
@@ -25,10 +26,12 @@ def new_article():
             db.session.rollback()
             flash("An error occurred. Please try again.", "danger")
             print("Error with commit to database:", e)
+            return render_template('newArticle.html')
         
         flash('Article created successfully!', 'success')
         # Redirect to the content listing page
         return redirect(url_for('main.contentListing'))
-    if request.method == 'GET':
+    # == 'GET' isn't required, as its the only remaining option. Leaving for clarity.
+    if request.method == 'GET': 
         return render_template('newArticle.html')  
     

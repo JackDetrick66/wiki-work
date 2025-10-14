@@ -21,17 +21,18 @@ def signup():
             flash("Username already taken.")
             return redirect(url_for('auth.signup'))
         
-# securely store password if successfully creating a new user.
+        # securely store password if successfully creating a new user.
         hashed_password = generate_password_hash(raw_password)
         new_user = User(username=username, password_hash=hashed_password)
         try:
-# add this user to the database
+            # add this user to the database
             db.session.add(new_user)
             db.session.commit()
         except Exception as e:
             db.session.rollback()
             flash("An error occurred. Please try again.", "danger")
             print("Error with commit to database:", e)
+            return(redirect(url_for('auth.signup')))
         
 
         flash('Signup successful!')
