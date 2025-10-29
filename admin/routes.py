@@ -1,3 +1,4 @@
+import datetime
 from decorators import admin_required
 from flask_login import current_user
 from flask import render_template, request, redirect, url_for, flash
@@ -35,3 +36,42 @@ def new_article():
     if request.method == 'GET': 
         return render_template('newArticle.html')  
     
+@admin_bp.route('/edit-article/<slug>', methods=['GET','POST'])
+@admin_required
+def edit_article(slug):
+        article = Article.query.filter_by(slug=slug).first_or_404()
+
+        if request.method == 'POST':
+             newTitle = request.form['title']
+             newBody = request.form['body']
+             article.body = newBody
+             article.title = newTitle
+             
+             article.slug = slugify(newTitle)
+
+        try:
+             #commit changes
+             db.session.commit()
+             flash('Article Edited Successfully!', 'success')
+        except Exception as e:
+             db.session.rollback()
+             flash("An error occurred. Please try again.", "danger")
+             print("Error with commit to database:", e)
+             return redirect(render_template('editArticle.html', article=article))
+
+        else:
+             return render_template('editArticle.html', article=article)
+        
+@admin_required
+def delete_article(slug):
+     article = Article.query.filter_by(slug=slug).first_or_404()
+     
+     try:
+        db.session.delete(article)
+        db.session.commit()
+        flash('Article Deleted Successfully!', 'success')
+     except Exception as e:
+          db.session.rollback()
+          flash("an error occurred. Please try again.", "danger")
+          print("error with commit to database:",e)
+     

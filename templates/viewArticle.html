@@ -11,6 +11,9 @@
     <p>{{ article.body|safe }}</p>
     <p>Published on: {{ article.date_created.strftime('%Y-%m-%d') }}</p>
     <p>Last updated: {{ article.last_modified.strftime('%Y-%m-%d') }}</p>
+    <a id="enteringArchiv" href="{{ url_for('main.contentListing') }}" class="button-link">
+      Return to the Archives.
+    </a>
   </body>
   
   

@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Add Article</title>
+    <title>Edit Article</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css_frontpage.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
   </head>
 
   <body>
-    <form action ="{{ url_for('admin.new_article') }}" method="post">
+    <form action ="{{ url_for('admin.edit_article') }}" method="post">
     <div id="editorTitle">
-        Record Name
+        <h2>Record Name</h2>
     </div>
 
     <div id="editor">
-        Preset build with <code>snow</code> theme, and some common formats.
+        <p>Preset build with <code>snow</code> theme, and some common formats.</p>
     </div>
 
         <input type="hidden" name="title" id="quillTitle">
@@ -35,4 +35,3 @@
     </script>
   </body>
 </html>
-
