@@ -23,6 +23,16 @@
         <a href = "{{ url_for('main.viewArticle', slug=article.slug) }}" class = "row-button-link">
           {{ article.title|safe}}
           </a>
+          {% if current_user.is_authenticated and current_user.is_admin %}
+
+          <a href = "{{ url_for('admin.edit_article', slug = article.slug) }}" class = "row-button-link">
+            Edit {{ article.title|safe}}
+          </a>
+          <a href = "{{ url_for('admin.delete_article', slug = article.slug) }}" class = "row-button-link">
+            Delete {{ article.title|safe}}
+          </a>
+
+          {% endif %}
       {% endfor %}
 
     <p id="hiddenMsgLeft">How do you know they aren't compromised?</p>
