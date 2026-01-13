@@ -10,18 +10,19 @@
   </head>
 
   <body>
-    <form action ="{{ url_for('admin.edit_article') }}" method="post">
+    <h1>Edit Article</h1>
+    <form action ="{{ url_for('admin.edit_article', slug=article.slug) }}" method="post">
     <div id="editorTitle">
-        <h2>Record Name</h2>
+        {{ article.title|safe }}
     </div>
 
     <div id="editor">
-        <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+        {{ article.body|safe }}
     </div>
 
         <input type="hidden" name="title" id="quillTitle">
         <input type="hidden" name="body" id="quillBody">
-        <button type="submit" class="button-link">Submit Article</button>
+        <button type="submit" class="button-link">Submit Changes</button>
     </form>
     <script>
         const quillTitle = new Quill('#editorTitle',{theme: 'snow'});
