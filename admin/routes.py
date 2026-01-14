@@ -39,29 +39,29 @@ def new_article():
 @admin_bp.route('/edit-article/<slug>', methods=['GET','POST'])
 @admin_required
 def edit_article(slug):
-        article = Article.query.filter_by(slug=slug).first_or_404()
+    article = Article.query.filter_by(slug=slug).first_or_404()
 
-        if request.method == 'POST':
-             newTitle = request.form['title']
-             newBody = request.form['body']
-             article.body = newBody
-             article.title = newTitle
-             
-             article.slug = slugify(newTitle)
+    if request.method == 'POST':
+        newTitle = request.form['title']
+        newBody = request.form['body']
+        article.body = newBody
+        article.title = newTitle
+        article.slug = slugify(newTitle)
 
         try:
-             #commit changes
-             db.session.commit()
-             flash('Article Edited Successfully!', 'success')
+            db.session.commit()
+            flash('Article Edited Successfully!', 'success')
+            return redirect(url_for('main.viewArticle', slug=article.slug))
         except Exception as e:
-             db.session.rollback()
-             flash("An error occurred. Please try again.", "danger")
-             print("Error with commit to database:", e)
-             return redirect(render_template('editArticle.html', article=article))
+            db.session.rollback()
+            flash("An error occurred. Please try again.", "danger")
+            print("Error with commit to database:", e)
+            return render_template('editArticle.html', article=article)
+    
+    # GET request
+    return render_template('editArticle.html', article=article)
 
-        else:
-             return render_template('editArticle.html', article=article)
-        
+@admin_bp.rout('/delete-article/<slug>', methods=['POST'])        
 @admin_required
 def delete_article(slug):
      article = Article.query.filter_by(slug=slug).first_or_404()
